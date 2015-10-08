@@ -7,7 +7,6 @@ gem 'uglifier', '>= 2.7.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise', '~> 3.4.1'
 gem "paperclip", "~> 4.2.1"
-gem 'jquery-turbolinks', '~> 2.1.0'
 gem 'figaro', '~> 1.1.0'
 gem 'bower-rails', '~> 0.10.0'
 gem 'jquery-rails', '~> 4.0.3'

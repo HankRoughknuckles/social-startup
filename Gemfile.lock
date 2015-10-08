@@ -232,5 +232,6 @@ DEPENDENCIES
   sdoc (~> 0.4.1)
   selenium-webdriver (~> 2.44.0)
   spring (~> 1.2.0)
+  turbolinks (~> 2.5.3)
   uglifier (>= 2.7.0)
   web-console (~> 2.0)
