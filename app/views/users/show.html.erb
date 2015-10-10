@@ -1,0 +1,9 @@
+<%= provide :title, @user.full_name %>
+
+<h1 class="name"><%= @user.full_name %></h1>
+
+<%= projects_page_link @user %>
+
+<% if current_user.present? and current_user == @user %>
+  <%= edit_profile_link @user %>
+<% end %>

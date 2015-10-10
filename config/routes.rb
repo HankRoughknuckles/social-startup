@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
+  root 'static_pages#home'
+
+  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #%% Users
+  ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  devise_for :users, paths: "users"
+
+  resources :users do
+    resources :projects
+  end
+
+  # get "users/:id" =>            "users#show", as: :user
+  # get "users/:id/projects" =>   "users#projects", as: :user_projects
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

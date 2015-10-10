@@ -1,14 +1,18 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'capybara/rails'
+require 'capybara/webkit/matchers'
+include Warden::Test::Helpers
+Warden.test_mode!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+  config.include Devise::TestHelpers, type: :controller
+
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   
@@ -34,7 +38,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.treat_symbols_as_metadata_keys_with_true_values = true
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
+  config.include Capybara::DSL
+  config.include(Capybara::Webkit::RspecMatchers, :type => :feature)
 end

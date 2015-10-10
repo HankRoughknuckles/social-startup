@@ -50,6 +50,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.7.1)
+      capybara (>= 2.3.0, < 2.6.0)
+      json
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
@@ -112,6 +115,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
     pg (0.18.3)
+    possessive (1.0.1)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -209,6 +213,7 @@ DEPENDENCIES
   bower-rails (~> 0.10.0)
   byebug
   capybara (~> 2.4.4)
+  capybara-webkit (= 1.7.1)
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.4.0)
   devise (~> 3.4.1)
@@ -219,6 +224,7 @@ DEPENDENCIES
   launchy (~> 2.4.3)
   paperclip (~> 4.2.1)
   pg (~> 0.18.1)
+  possessive (~> 1.0.1)
   rails (= 4.2.0)
   rails_12factor (~> 0.0.3)
   rails_serve_static_assets (~> 0.0.4)
