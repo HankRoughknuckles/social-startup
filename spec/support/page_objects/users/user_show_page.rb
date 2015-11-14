@@ -5,12 +5,13 @@ class UserShowPage
   attr_reader :title
 
   def initialize(user)
-    @user =                 user
-    @page_url =							user_path user
-    @title =								user.full_name
+    @user = user
+    @page_url = user_path user
+    @title = user.full_name
 
-    @user_projects_link =   ".show_projects"
-    @edit_profile_link =    ".edit_profile"
+    @user_projects_link = ".show_projects"
+    @edit_profile_link = ".edit_profile"
+    @profile_image = ".profile"
   end
 
 
@@ -41,5 +42,9 @@ class UserShowPage
 
   def has_an_edit_profile_link?
     has_css? @edit_profile_link
+  end
+
+  def has_a_profile_image?
+    has_css? @profile_image
   end
 end

@@ -6,6 +6,7 @@ require "spec_helper"
 shared_examples "a user show page" do 
   it { expect(show_page).to have_proper_title }
   it { expect(show_page).to have_users_full_name }
+  it { expect(show_page).to have_a_profile_image }
 end
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,5 +45,4 @@ describe "User Show Page" do
     it { expect(show_page).not_to have_an_edit_profile_link }
   end
 end
-
 
