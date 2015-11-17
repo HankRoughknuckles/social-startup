@@ -15,6 +15,7 @@ gem 'jquery-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.1', group: :doc
 gem 'foreman', '~> 0.78.0'
 gem 'possessive', '~> 1.0.1'
+gem 'bugsnag', '~> 2.8', '>= 2.8.12'
  
  
 group :development, :test do
