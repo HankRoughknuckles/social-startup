@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Projects Page" do
   let(:subject_user) { FactoryGirl.create(:user, first_name: "John",
                                           last_name: "Doe") }
-  let(:projects_page) { UserProjectsPage.new(subject_user) }
+  let(:projects_page) { ProjectsPage.new(subject_user) }
   let!(:project_1) { FactoryGirl.create(:project, user: subject_user) }
   let(:others_project) { FactoryGirl.create(:project) }
 
