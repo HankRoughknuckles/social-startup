@@ -1,16 +1,13 @@
 require "spec_helper"
 
 describe "Projects Page" do
-  let(:subject_user)    { FactoryGirl.create(:user, first_name: "John",
-                                              last_name: "Doe") }
-  let(:projects_page)   { UserProjectsPage.new(subject_user) }
-  let(:project_1)       { FactoryGirl.create(:project) }
-  let(:others_project)  { FactoryGirl.create(:project) }
+  let(:subject_user) { FactoryGirl.create(:user, first_name: "John",
+                                          last_name: "Doe") }
+  let(:projects_page) { UserProjectsPage.new(subject_user) }
+  let!(:project_1) { FactoryGirl.create(:project, user: subject_user) }
+  let(:others_project) { FactoryGirl.create(:project) }
 
-  before do
-    subject_user.projects << project_1
-    projects_page.visit_page_as subject_user
-  end
+  before { projects_page.visit_page_as subject_user }
 
 
   it 'should be accessible from the user show page' do
