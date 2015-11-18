@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
     styles: { 
       medium: "300x300>", 
       thumb: "100x100>" 
-    }, 
+    },
+    s3_host_name: "s3.eu-central-1.amazonaws.com",
     default_url: ":style/default_profile_pic.png"
+
 
   validates_attachment_content_type :profile_picture, 
     content_type: /\Aimage\/.*\Z/
