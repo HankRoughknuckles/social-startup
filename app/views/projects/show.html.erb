@@ -15,5 +15,5 @@
   <%= @project.user %>
 </p>
 
-<%= link_to 'Edit', edit_user_project_path(current_user, @project) %> |
+<%= link_to 'Edit', edit_user_project_path(@user, @project) %> |
 <%= link_to 'Back', user_projects_path %>
