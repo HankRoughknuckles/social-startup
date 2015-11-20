@@ -17,7 +17,10 @@ describe "The Project Show Page" do
     end
 
 
-    it "should have a working delete project link"
+    it "should have a working delete project link" do
+      expect{ show_page.click_delete_project_link }
+        .to change {Project.count}.by -1
+    end
   end
 
 
@@ -27,6 +30,6 @@ describe "The Project Show Page" do
     before { show_page.visit_page_as non_owner }
 
     it { expect(show_page).not_to have_an_edit_project_link }
-    it "should not have a delete project link"
+    it { expect(show_page).not_to have_a_delete_project_link }
   end
 end
