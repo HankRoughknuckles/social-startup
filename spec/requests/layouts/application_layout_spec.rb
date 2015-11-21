@@ -1,9 +1,11 @@
 require "spec_helper"
 
 describe "The Application Layout" do
+  let(:layout) { ApplicationLayoutPage.new }
+
+
   context 'when logged in' do
     let(:user) { FactoryGirl.create(:user) }
-    let(:layout) { ApplicationLayoutPage.new }
 
     before do
       login_as(user)
@@ -20,7 +22,16 @@ describe "The Application Layout" do
 
 
   context 'when logged out' do
-    it "Should have a sign in button"
+    before do
+      logout
+      visit root_path
+    end
+
+    it "Should have a sign in button" do
+      layout.click_sign_in_button
+      expect(page).to have_title NewSessionPage.new.title
+    end
+
     it "Should have a sign up button"
   end
 end

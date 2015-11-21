@@ -14,4 +14,8 @@ class ApplicationLayoutPage
   def has_sign_in_button?
     has_css? @sign_in_button
   end
+
+  def click_sign_in_button
+    find(@sign_in_button).click
+  end
 end
