@@ -16,6 +16,8 @@
       method: :delete, class: "sign_out" %>
   <% else %>
     <%= link_to "Sign In", new_user_session_path, class: "sign_in" %>
+    | <%= link_to "Create an Account", new_user_registration_path, 
+      class: "sign_up" %>
   <% end %>
 </div>
 

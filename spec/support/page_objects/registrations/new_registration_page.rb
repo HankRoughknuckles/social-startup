@@ -1,12 +1,12 @@
-class SignupPage
+class NewRegistrationPage
   include Capybara::DSL
   include Rails.application.routes.url_helpers
 
   attr_reader :title
 
   def initialize
-    @page_url =							new_user_registration_path
-    @title =								"Sign up"
+    @page_url =	new_user_registration_path
+    @title = "Create an Account"
   end
 
   def visit_page

@@ -4,6 +4,7 @@ class ApplicationLayoutPage
 
   def initialize
     @profile_button = ".header .profile"
+    @sign_up_button = ".header .sign_up"
     @sign_out_button = ".header .sign_out"
     @sign_in_button = ".header .sign_in"
   end
@@ -19,6 +20,12 @@ class ApplicationLayoutPage
 
   def click_sign_in_button
     find(@sign_in_button).click
+  end
+
+
+  #sign up button
+  def click_sign_up_button
+    find(@sign_up_button).click
   end
 
 

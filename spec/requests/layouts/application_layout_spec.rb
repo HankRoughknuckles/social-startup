@@ -35,6 +35,9 @@ describe "The Application Layout" do
       expect(page).to have_title NewSessionPage.new.title
     end
 
-    it "Should have a sign up button"
+    it "Should have a sign up button" do
+      layout.click_sign_up_button
+      expect(page).to have_title NewRegistrationPage.new.title
+    end
   end
 end

@@ -17,7 +17,7 @@ describe "User Show Page" do
 
   # page objects
   let(:show_page) { UserShowPage.new(subject_user) }
-  let(:signup_page) { SignupPage.new }
+  let(:signup_page) { NewRegistrationPage.new }
 
   it 'should redirect to the signup page when not logged in' do
     show_page.visit_page_as nil 
