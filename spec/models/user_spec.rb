@@ -28,7 +28,10 @@ RSpec.describe User, :type => :model do
     before { user.projects << FactoryGirl.create(:project) }
 
     it { expect(user.projects.count).to eq 1 }
-    it "should also get deleted when user is destroyed"
+
+    it "should also get deleted when user is destroyed" do
+      expect { user.destroy }.to change { Project.count }.by -1
+    end
   end
 
 
