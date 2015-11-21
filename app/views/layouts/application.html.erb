@@ -10,8 +10,10 @@
 
 <div class="header">
   <% if user_signed_in? %>
-    Hi, <%= link_to current_user.first_name, user_path(current_user),
-      class: "profile" %>
+    <%= link_to user_path(current_user), class: "profile" do %>
+      <%= image_tag current_user.profile_picture(:thumb) %>
+      <%= current_user.first_name %>
+    <% end %>
     <%= link_to "Sign Out", destroy_user_session_path, 
       method: :delete, class: "sign_out" %>
   <% else %>
