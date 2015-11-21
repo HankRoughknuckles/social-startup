@@ -17,7 +17,10 @@ describe "The Application Layout" do
       expect(layout).to have_sign_in_button
     end
 
-    it "should have a profile button"
+    it "should have a profile button" do
+      layout.click_profile_button
+      expect(page).to have_title UserShowPage.new(user).title
+    end
   end
 
 
