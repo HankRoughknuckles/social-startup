@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @project.name %></h1>
+
 <p>
-  <strong>Name:</strong>
-  <%= @project.name %>
+  <%= image_tag @project.project_image(:medium) %>
 </p>
 
 <p>
   <strong>Description:</strong>
   <%= @project.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @project.user %>
 </p>
 
 <% if current_user && current_user == @user %>
