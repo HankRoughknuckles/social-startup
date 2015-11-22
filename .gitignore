@@ -16,3 +16,4 @@
 /config/application.yml
 
 /public/system/**
+/app/public/**
