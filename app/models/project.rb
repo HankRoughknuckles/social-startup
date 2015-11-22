@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
       thumb: "100x100>" 
     },
     s3_host_name: "s3.eu-central-1.amazonaws.com",
-    default_url: ":style/default_profile_pic.png"
+    default_url: ":style/default_project_image.jpg"
 
 
   validates_attachment_content_type :project_image, 
