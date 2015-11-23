@@ -5,6 +5,12 @@
 <%= image_tag @user.profile_picture(:medium), class: "profile" %>
 <%= projects_page_link @user %>
 
+<%= render 'posts/form' %>
+
 <% if current_user.present? and current_user == @user %>
   <%= edit_profile_link @user %>
+<% end %>
+
+<% @user.posts.each do |post| %>
+  <%= post.body %>
 <% end %>

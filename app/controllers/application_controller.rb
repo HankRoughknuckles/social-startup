@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:account_update) << :profile_picture
     end
+
+  private
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 end

@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   #%% Database relations
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   has_many :projects, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   #%% Instance variables

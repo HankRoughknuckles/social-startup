@@ -25,12 +25,26 @@ RSpec.describe User, :type => :model do
   #%% projects
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   describe "projects" do
-    before { user.projects << FactoryGirl.create(:project) }
+    before { FactoryGirl.create(:project, user: user) }
 
     it { expect(user.projects.count).to eq 1 }
 
     it "should also get deleted when user is destroyed" do
       expect { user.destroy }.to change { Project.count }.by -1
+    end
+  end
+
+
+  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #%% posts
+  ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  describe "posts" do
+    before { FactoryGirl.create(:post, user: user) }
+
+    it { expect(user.posts.count).to eq 1 }
+
+    it "should also get deleted when user is destroyed" do
+      expect { user.destroy }.to change { Post.count }.by -1
     end
   end
 

@@ -34,10 +34,19 @@ describe "User Show Page" do
     it { expect(show_page).to have_an_edit_profile_link }
 
     describe "the new post form" do
-      let(:new_post_form) { NewPostForm.new(user) }
-      it { 
-        pending
-        expect(new_post_form).to have_a_text_entry }
+      let(:new_post_form) { NewPostForm.new(subject_user) }
+
+      it { expect(new_post_form).to have_a_text_entry }
+
+      it "should create a new post when a body is present" do
+        expect{ new_post_form.create_post "This is a post" }
+          .to change{ subject_user.posts.count }.by 1
+      end
+
+      it "should not create a new post when body is blank" do
+        expect{ new_post_form.create_post "" }
+          .to change{ subject_user.posts.count }.by 0
+      end
     end
   end
 
