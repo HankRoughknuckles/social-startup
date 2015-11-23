@@ -32,6 +32,13 @@ describe "User Show Page" do
     it_should_behave_like "a user show page"
 
     it { expect(show_page).to have_an_edit_profile_link }
+
+    describe "the new post form" do
+      let(:new_post_form) { NewPostForm.new(user) }
+      it { 
+        pending
+        expect(new_post_form).to have_a_text_entry }
+    end
   end
 
 

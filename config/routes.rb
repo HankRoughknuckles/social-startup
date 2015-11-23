@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'static_pages#home'
 
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :projects
+    resources :posts
   end
 
   # get "users/:id" =>            "users#show", as: :user
