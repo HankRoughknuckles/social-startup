@@ -7,13 +7,17 @@ shared_examples "a user show page" do
   it { expect(show_page).to have_proper_title }
   it { expect(show_page).to have_users_full_name }
   it { expect(show_page).to have_a_profile_image }
+  it { expect(page).to have_content post_1.body }
+  it { expect(page).to have_content post_2.body }
 end
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #%% The specs
 ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 describe "User Show Page" do
-  let(:subject_user) { FactoryGirl.create(:user) }
+  let!(:subject_user) { FactoryGirl.create(:user) }
+  let!(:post_1) { FactoryGirl.create(:post, body: "post no. 1", user: subject_user) }
+  let!(:post_2) { FactoryGirl.create(:post, body: "post no. 2", user: subject_user) }
 
   # page objects
   let(:show_page) { UserShowPage.new(subject_user) }

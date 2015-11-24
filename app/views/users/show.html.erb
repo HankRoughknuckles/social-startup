@@ -11,6 +11,4 @@
   <%= edit_profile_link @user %>
 <% end %>
 
-<% @user.posts.each do |post| %>
-  <%= post.body %>
-<% end %>
+<%= render 'shared/post_list' %>
