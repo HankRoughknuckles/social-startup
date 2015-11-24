@@ -58,6 +58,6 @@ describe "User Show Page" do
     it_should_behave_like "a user show page"
 
     it { expect(show_page).not_to have_an_edit_profile_link }
+    it { expect(NewPostForm.new subject_user).not_to have_a_text_entry }
   end
 end
-
