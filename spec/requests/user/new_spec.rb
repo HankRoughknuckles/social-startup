@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe "The Edit User Page" do
   let(:user) { FactoryGirl.create(:user) }
-  let(:edit_page) { EditUserPage.new user }
+  let(:edit_page) { UserEditPage.new user }
 
   it "should redirect to the signup page when not logged in" do
     edit_page.visit_page_as nil
@@ -15,6 +15,6 @@ describe "The Edit User Page" do
     before { edit_page.visit_page_as user }
 
 
-    it { expect(edit_page).to have_a_profile_picture_input }
+    it { expect(edit_page).to have_profile_picture_input }
   end
 end
