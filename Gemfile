@@ -16,6 +16,7 @@ gem 'sdoc', '~> 0.4.1', group: :doc
 gem 'foreman', '~> 0.78.0'
 gem 'possessive', '~> 1.0.1'
 gem 'bugsnag', '~> 2.8', '>= 2.8.12'
+gem 'slim-rails', '~> 3.0', '>= 3.0.1'
  
  
 group :development, :test do
