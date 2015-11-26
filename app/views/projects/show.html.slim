@@ -1,0 +1,12 @@
+p#notice= notice
+h1= @project.name
+p
+  = image_tag @project.project_image(:medium)
+p
+  strong Description:
+  = @project.description
+- if current_user && current_user == @user
+  = link_to 'Edit', edit_user_project_path(@user, @project),
+    class: "edit_project"
+  = link_to 'Delete', [@user, @project], method: :delete,  class: "delete_project" 
+  = link_to 'Back', user_projects_path
