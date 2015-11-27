@@ -3,5 +3,4 @@ FactoryGirl.define do
     body "MyText"
     user nil
   end
-
 end
