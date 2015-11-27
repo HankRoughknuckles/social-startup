@@ -2,9 +2,9 @@ ul.list-group
   - @user.posts.reverse.each do |post|
     li.list-group-item
       h4
-        = link_to post.user.full_name, post.user
+        = link_to "#{post.user.full_name} ", post.user
         small
-          = time_ago_in_words(post.created_at) unless post.created_at.blank?
-          | ago
+           = time_ago_in_words(post.created_at) unless post.created_at.blank?
+           |  ago
       div
         = post.body
