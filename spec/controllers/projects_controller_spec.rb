@@ -19,4 +19,8 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe ProjectsController, :type => :controller do
+  describe 'DELETE #destroy' do
+    it "should work for owner of project"
+    it "should not work for non owner"
+  end
 end
