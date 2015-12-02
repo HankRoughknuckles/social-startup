@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :external_account do
-    site "MyString"
-url "MyString"
-user nil
+    hostsite "Facebook"
+    url "http://www.facebook.com/someuser"
+    user nil
   end
-
 end
