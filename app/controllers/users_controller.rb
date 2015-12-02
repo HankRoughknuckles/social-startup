@@ -11,4 +11,8 @@ class UsersController < ApplicationController
   def about
     @user = User.find params[:id]
   end
+
+  def edit_about
+    @user = User.find params[:id]
+  end
 end

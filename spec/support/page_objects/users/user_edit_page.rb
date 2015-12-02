@@ -15,6 +15,8 @@ class UserEditPage
     @last_name_input = "#user_last_name"
     @current_password_input = "#user_current_password"
     @submit_button = "form.edit_user input[type=submit]"
+
+    @edit_about_link = ".edit_about"
   end
 
   def visit_page
@@ -48,5 +50,9 @@ class UserEditPage
     find(@current_password_input).set(values[:current_password]) unless values[:current_password].nil?
 
     find(@submit_button).click
+  end
+
+  def click_edit_about_link
+    find(@edit_about_link).click
   end
 end
