@@ -1,8 +1,10 @@
 = provide :title, "About #{@user.first_name}"
 
 - @user.external_accounts.each do |account|
-  .host= account.hostsite
-  .external_url= account.url
+  .row
+    .account.col-md-6
+      .col-md-3.host= account.hostsite
+      .col-md-9.external_url= link_to account.url, "http://#{account.url}"
 
 - if current_user && current_user == @user
   = link_to "Edit", edit_about_user_path(@user), class: "edit"
