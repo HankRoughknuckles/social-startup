@@ -12,4 +12,13 @@ describe "The edit about page" do
 
     expect(page.title).to eq edit_page.title
   end
+
+  it 'should be accessible from the about page' do
+    main_edit_page = UserAboutPage.new(user)
+
+    main_edit_page.visit_page_as user
+    main_edit_page.click_edit_about_link
+
+    expect(page.title).to eq edit_page.title
+  end
 end

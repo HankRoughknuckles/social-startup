@@ -7,4 +7,4 @@
       .col-md-9.external_url= link_to account.url, "http://#{account.url}", target: "_blank"
 
 - if current_user && current_user == @user
-  = link_to "Edit", edit_about_user_path(@user), class: "edit"
+  = link_to "Edit", edit_about_user_path(@user), class: "edit_about"
