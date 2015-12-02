@@ -2,6 +2,12 @@ require "spec_helper"
 
 describe "About User Page" do
   let(:user) { FactoryGirl.create(:user) }
+  let!(:github_account) { FactoryGirl.create(:external_account, user: user,
+                                             hostsite: "github", 
+                                             url: "www.github.com/asdf") }
+  let!(:linkedin_account) { FactoryGirl.create(:external_account, user: user,
+                                               hostsite: "linkedin", 
+                                               url: "linkedin.com/asdf") }
   let(:about_page) { UserAboutPage.new user }
 
   it "should be accessible from the user show page" do
@@ -24,7 +30,14 @@ describe "About User Page" do
 
     context "when visiting as the owner" do
       before { about_page.visit_page_as user }
+
       it { expect(about_page).to have_an_edit_link }
+
+      it { expect(about_page).to have_hostsite "github" }
+      it { expect(about_page).to have_external_account_url "www.github.com/asdf" }
+
+      it { expect(about_page).to have_hostsite "linkedin" }
+      it { expect(about_page).to have_external_account_url "linkedin.com/asdf" }
     end
   end
 end

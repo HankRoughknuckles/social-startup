@@ -1,4 +1,8 @@
 = provide :title, "About #{@user.first_name}"
 
+- @user.external_accounts.each do |account|
+  .host= account.hostsite
+  .external_url= account.url
+
 - if current_user && current_user == @user
   = link_to "Edit", edit_about_user_path(@user), class: "edit"

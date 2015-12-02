@@ -10,6 +10,8 @@ class UserAboutPage
     @title = "About #{user.first_name}"
 
     @edit_link = ".edit"
+    @hostsite_entry = ".host"
+    @exteral_account_url_entry = ".external_url"
   end
 
   def visit_page
@@ -23,5 +25,13 @@ class UserAboutPage
 
   def has_an_edit_link?
     has_css? @edit_link
+  end
+
+  def has_hostsite? hostsite
+    has_css? @hostsite_entry, text: hostsite
+  end
+
+  def has_external_account_url? url
+    has_css? @exteral_account_url_entry, text: url
   end
 end
