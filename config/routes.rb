@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   #%% Users
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  get "users/:id/about" => "users#about", as: :about_user
+  get "users/:id/about/edit" => "users#edit_about", as: :edit_about_user
+
   devise_for :users, paths: "users"
 
   resources :users do
     resources :projects
     resources :posts
+    resources :external_accounts
   end
 
   # get "users/:id" =>            "users#show", as: :user

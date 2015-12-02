@@ -12,6 +12,7 @@ class UserShowPage
     @user_projects_link = ".show_projects"
     @edit_profile_link = ".edit_profile"
     @profile_image = ".profile"
+    @about_page_link = ".about"
   end
 
 
@@ -46,5 +47,13 @@ class UserShowPage
 
   def has_a_profile_image?
     has_css? @profile_image
+  end
+
+  def has_an_about_page_link?
+    has_css? @about_page_link
+  end
+
+  def click_about_page_link
+    find(@about_page_link).click
   end
 end

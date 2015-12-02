@@ -1,0 +1,4 @@
+= provide :title, "About #{@user.first_name}"
+
+- if current_user && current_user == @user
+  = link_to "Edit", edit_about_user_path(@user), class: "edit"

@@ -1,0 +1,2 @@
+class ExternalAccountsController < ApplicationController
+end
