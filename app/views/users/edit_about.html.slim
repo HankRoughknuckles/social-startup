@@ -1,3 +1,15 @@
 -provide :title, "Edit 'About Me'"
 
 h1 Edit - About Me
+
+= form_for @user, url: update_about_user_path(@user) do |f|
+  = f.fields_for :external_accounts do |nested|
+    p
+      = nested.select(:hostsite, [ \
+          ["Other", "other"], \
+          ["Github", "github"], \
+          ["Facebook", "facebook"] \
+        ], {}, { class: "external_accounts_hostsite" })
+
+      = nested.text_field :url, placeholder: "URL", class: "external_accounts_url"
+  = f.submit

@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :external_accounts, dependent: :destroy
 
+  accepts_nested_attributes_for :external_accounts
+
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   #%% Validations
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

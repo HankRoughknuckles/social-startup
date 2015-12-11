@@ -3,6 +3,7 @@ class ExternalAccount < ActiveRecord::Base
 
   before_validation :strip_url!
 
+  # removes the beginning "http://www." from self.url
   def strip_url!
     self.url = url
       .gsub("http://", "")

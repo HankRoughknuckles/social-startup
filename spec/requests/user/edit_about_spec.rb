@@ -21,4 +21,20 @@ describe "The edit about page" do
 
     expect(page.title).to eq edit_page.title
   end
+
+  describe "The page contents" do
+    before { edit_page.visit_page_as user }
+
+    it { expect(edit_page).to have_account_host_dropdown }
+    it { expect(edit_page).to have_account_url_input }
+
+    describe "adding an external account" do
+      it "should work when url is present" do
+        expect{ 
+          edit_page.submit_external_account hostsite: "github", url: "bags"
+        }.to change { user.external_accounts.count }.by 1
+      end
+    end
+  end
 end
+

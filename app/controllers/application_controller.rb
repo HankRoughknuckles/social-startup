@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:account_update) << [
-        :profile_picture, :first_name, :last_name
+        :profile_picture, :first_name, :last_name,
+        external_accounts_attributes: [:hostsite, :url]
       ]
     end
 
@@ -16,3 +17,4 @@ class ApplicationController < ActionController::Base
       @user = User.find(params[:user_id])
     end
 end
+
