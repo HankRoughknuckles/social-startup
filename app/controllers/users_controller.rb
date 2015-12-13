@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
 
   def edit_about
-    @user.external_accounts.build
+    3.times { @user.external_accounts.build }
   end
 
 
