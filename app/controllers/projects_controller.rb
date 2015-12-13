@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_user
+  before_action { set_user params[:user_id] }
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects

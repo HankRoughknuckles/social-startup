@@ -13,8 +13,17 @@ class ApplicationController < ActionController::Base
     end
 
   private
-    def set_user
-      @user = User.find(params[:user_id])
+    def set_user id
+      @user = User.find id
+    end
+
+
+    def correct_user user_to_check
+      if current_user.nil? 
+        redirect_to new_user_registration_path, alert: "Please log in first."
+      elsif user_to_check != current_user
+        redirect_to root_path, alert: "Sorry, that's unauthorized."
+      end
     end
 end
 

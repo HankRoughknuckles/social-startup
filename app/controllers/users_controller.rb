@@ -1,25 +1,26 @@
 class UsersController < ApplicationController
+  before_action { set_user params[:id] }
+  before_action only: [:update_about] { correct_user(@user) }
+
   def show
     if user_signed_in?
-      @user = User.find params[:id]
       @post = Post.new
     else
       redirect_to new_user_registration_path unless user_signed_in?
     end
   end
 
+
   def about
-    @user = User.find params[:id]
   end
 
+
   def edit_about
-    @user = User.find params[:id]
     @user.external_accounts.build
   end
 
-  def update_about
-    @user = User.find params[:id]
 
+  def update_about
     if @user.update(about_params)
       redirect_to about_user_path(@user), 
         notice: 'Project was successfully updated.'
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
       render :edit_about
     end
   end
+
 
   private
     def about_params
