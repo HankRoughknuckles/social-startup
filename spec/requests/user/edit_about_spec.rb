@@ -35,6 +35,11 @@ describe "The edit about page" do
         }.to change { user.external_accounts.count }.by 1
       end
     end
+
+    it "should not add anything if url is blank" do
+      expect{ edit_page.click_submit_button }
+        .to change { user.external_accounts.count }.by 0
+    end
   end
 end
 
