@@ -44,8 +44,8 @@ class EditAboutPage
   end
 
   def submit_external_account account
-    set_hostsite account["hostsite"]
-    set_url account["url"]
+    set_hostsite account[:hostsite]
+    set_url account[:url]
 
     click_submit_button
   end

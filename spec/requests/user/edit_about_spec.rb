@@ -31,14 +31,14 @@ describe "The edit about page" do
     describe "adding an external account" do
       it "should work when url is present" do
         expect{ 
-          edit_page.submit_external_account hostsite: "github", url: "bags"
+          edit_page.submit_external_account hostsite: "Github", url: "bags"
         }.to change { user.external_accounts.count }.by 1
       end
-    end
 
-    it "should not add anything if url is blank" do
-      expect{ edit_page.click_submit_button }
-        .to change { user.external_accounts.count }.by 0
+      it "should not add anything if url is blank" do
+        expect{ edit_page.click_submit_button }
+          .to change { user.external_accounts.count }.by 0
+      end
     end
   end
 end

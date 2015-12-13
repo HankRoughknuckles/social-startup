@@ -10,4 +10,17 @@ class ExternalAccount < ActiveRecord::Base
       .gsub("https://", "")
       .gsub("www.", "") unless self.url.nil?
   end
+
+  # returns the array needed for the dropdown for selecting what hostsite
+  # the external account belongs to
+  def self.hostsite_options
+    [
+      ["", ""],
+      ["Github", "Github"],
+      ["Facebook", "Facebook"],
+      ["Twitter", "Twitter"],
+      ["Behance", "Behance"],
+      ["500px", "500px"]
+    ]
+  end
 end
