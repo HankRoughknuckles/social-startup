@@ -21,9 +21,10 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
 
     if @user.update(about_params)
-      redirect_to [@user, @project], notice: 'Project was successfully updated.'
+      redirect_to about_user_path(@user), 
+        notice: 'Project was successfully updated.'
     else
-      render :edit
+      render :edit_about
     end
   end
 
