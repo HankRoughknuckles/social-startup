@@ -1,0 +1,9 @@
+= nested.select(:hostsite, [ \
+    ["Other", "Other"], \
+    ["Github", "github"], \
+    ["Facebook", "facebook"] \
+  ], {}, { class: "external_accounts_hostsite" })
+
+= nested.text_field :url, placeholder: "URL", class: "external_accounts_url"
+= nested.check_box :_destroy
+= nested.label :_destroy, "Remove Account"

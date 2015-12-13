@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   private
     def about_params
       params.require(:user).permit(
-        external_accounts_attributes: [:id, :hostsite, :url]
+        external_accounts_attributes: [:id, :hostsite, :url, :_destroy]
       )
     end
 end

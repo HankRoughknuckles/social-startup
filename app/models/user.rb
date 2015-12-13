@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   has_many :external_accounts, dependent: :destroy
 
   accepts_nested_attributes_for :external_accounts, 
-    reject_if: lambda {|account| account[:url].blank?}
+    reject_if: lambda {|account| account[:url].blank?},
+    allow_destroy: true
 
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   #%% Validations
