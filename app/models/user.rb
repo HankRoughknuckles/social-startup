@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :external_accounts, dependent: :destroy
+  has_many :interests_users
+  has_many :interests, through: :interests_users
 
   accepts_nested_attributes_for :external_accounts, 
     reject_if: lambda {|account| account[:url].blank?},
