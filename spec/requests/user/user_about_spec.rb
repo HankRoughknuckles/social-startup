@@ -40,4 +40,7 @@ describe "About User Page" do
       it { expect(about_page).to have_external_account_url "linkedin.com/asdf" }
     end
   end
+
+  describe "interests" do
+  end
 end

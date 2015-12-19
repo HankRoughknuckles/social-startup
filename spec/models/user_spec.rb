@@ -10,6 +10,7 @@ RSpec.describe User, :type => :model do
     it { expect(user).to respond_to :last_name }
     it { expect(user).to respond_to :full_name }
     it { expect(user).to respond_to :projects }
+    it { expect(user).to respond_to :interests }
   end
 
 
@@ -94,5 +95,44 @@ RSpec.describe User, :type => :model do
 
       expect(user.full_name).to eq "McGaven"
     end
+  end
+
+  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #%% User#add_interest
+  ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  describe "#add_interest" do
+    it "should create a new interests_users record" do
+      expect { user.add_interest("bugs") }
+        .to change { InterestsUser.count }.by 1
+    end
+
+    it "should create a new interest record if none exists" do
+      expect { user.add_interest("bugs") }
+        .to change { Interest.count }.by 1
+    end
+
+    context "when the interest already exists" do
+      let(:other_user) { FactoryGirl.create(:user) }
+      before { other_user.add_interest("bugs") }
+
+      it "should not create a new interest record" do
+        expect { user.add_interest("bugs") }
+          .to change { Interest.count }.by 0
+      end
+
+      it "should not create a new interest regardless of letter case" do
+        expect { user.add_interest("BUgs") }
+          .to change { Interest.count }.by 0
+      end
+    end
+  end
+
+
+  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #%% User#remove_interest
+  ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  describe "#remove_interest" do
+    it "should delete the interest_users when removing"
+    it "should delete the interest if no other user has that interest"
   end
 end

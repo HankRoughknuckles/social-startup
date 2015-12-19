@@ -44,4 +44,12 @@ class User < ActiveRecord::Base
   def full_name
     (first_name.to_s + " " + last_name.to_s).strip
   end
+
+  # adds a new interest to the user by interest name (case-insensitive).
+  # Will create a new Interest record if none exists.
+  def add_interest interest_name
+    interest_name.downcase!
+    interest_name[0] = interest_name[0].capitalize
+    interests << Interest.find_or_create_by(name: interest_name)
+  end
 end
