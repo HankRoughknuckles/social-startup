@@ -32,11 +32,13 @@ class EditAboutPage
   end
 
   def set_hostsite hostsite
-    find(@account_host_dropdown).set hostsite unless hostsite.nil?
+    dropdowns = page.all @account_host_dropdown
+    dropdowns[0].set hostsite unless hostsite.nil?
   end
 
   def set_url url
-    find(@account_url_input).set url unless url.nil?
+    inputs = page.all @account_url_input
+    inputs[0].set url unless url.nil?
   end
 
   def click_submit_button
