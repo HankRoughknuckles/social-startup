@@ -33,23 +33,35 @@ class User < ActiveRecord::Base
     reject_if: lambda {|account| account[:url].blank?},
     allow_destroy: true
 
+
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   #%% Validations
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   validates_presence_of :first_name
 
+
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  #%% Instance variables
+  #%% Instance methods
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   def full_name
     (first_name.to_s + " " + last_name.to_s).strip
   end
 
-  # adds a new interest to the user by interest name (case-insensitive).
+
+  # Adds a new interest to the user by interest name (case-insensitive).
   # Will create a new Interest record if none exists.
   def add_interest interest_name
-    interest_name.downcase!
-    interest_name[0] = interest_name[0].capitalize
+    interest_name = Interest.capitalize_first interest_name
     interests << Interest.find_or_create_by(name: interest_name)
+  end
+
+
+  # Removes the interest for the user.  Deletes the interest entirely if
+  # no one else has it.
+  def remove_interest interest_name
+    interest_name = Interest.capitalize_first interest_name
+    interest = Interest.find_by_name interest_name
+    self.interests.delete interest
+    interest.destroy unless interest.users.any?
   end
 end

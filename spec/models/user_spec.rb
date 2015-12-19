@@ -132,7 +132,24 @@ RSpec.describe User, :type => :model do
   #%% User#remove_interest
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   describe "#remove_interest" do
-    it "should delete the interest_users when removing"
-    it "should delete the interest if no other user has that interest"
+    before { user.add_interest "bugs" }
+
+    it "should delete the interest_users when removing" do
+      expect { user.remove_interest("bugs") }
+        .to change { InterestsUser.count }.by -1
+    end
+
+    it "should not delete the interest if other user has it" do
+      other_user = FactoryGirl.create(:user)
+      other_user.add_interest "bugs"
+
+      expect { user.remove_interest("bugs") }
+        .to change { Interest.count }.by 0
+    end
+
+    it "should delete the interest if no other user has it" do
+      expect { user.remove_interest("bugs") }
+        .to change { Interest.count }.by -1
+    end
   end
 end
