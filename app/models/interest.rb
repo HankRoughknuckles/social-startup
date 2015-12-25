@@ -12,5 +12,6 @@ class Interest < ActiveRecord::Base
 
     input = input.downcase
     input[0] = input[0].capitalize
+    input
   end
 end
