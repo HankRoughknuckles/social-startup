@@ -1,3 +1,5 @@
+require "json"
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -53,6 +55,18 @@ class User < ActiveRecord::Base
   def add_interest interest_name
     interest_name = Interest.capitalize_first interest_name
     interests << Interest.find_or_create_by(name: interest_name)
+  end
+
+
+  # Takes json for an array of strings and adds each to the user's
+  # interests
+  def add_interests_from_json json_interest_names
+    begin
+      JSON.parse(json_interest_names).each do |interest_name|
+        add_interest interest_name
+      end
+    rescue 
+    end
   end
 
 

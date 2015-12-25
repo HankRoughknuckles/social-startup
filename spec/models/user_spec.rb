@@ -152,4 +152,26 @@ RSpec.describe User, :type => :model do
         .to change { Interest.count }.by -1
     end
   end
+
+
+  #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  #%% User#add_interests_from_json
+  ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  describe "#add_interests_from_json" do
+    it "should add a single interest" do
+      user.add_interests_from_json '["cats"]'
+      expect(user.reload.interests.find_by_name "Cats").to be_present
+    end
+
+    it "should add a multiple interests" do
+      expect { 
+        user.add_interests_from_json('["cats", "plants", "loneliness"]')
+      }.to change { user.interests.count }.by 3
+    end
+
+    it "shouldn't add anything for non-json input" do
+      expect { user.add_interests_from_json '[cats]' }
+        .to change { user.interests.count }.by 0
+    end
+  end
 end
