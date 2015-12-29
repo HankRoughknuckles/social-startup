@@ -177,6 +177,12 @@ RSpec.describe User, :type => :model do
       }.to change { user.interests.count }.by 1
     end
 
+    it "should only add one interest if duplicates occur in input" do
+      expect { 
+        user.add_interests_from_json('["ants", "ants"]')
+      }.to change { user.interests.count }.by 1
+    end
+
     it "shouldn't add anything for non-json input" do
       expect { user.add_interests_from_json '[cats]' }
         .to change { user.interests.count }.by 0

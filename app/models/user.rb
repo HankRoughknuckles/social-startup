@@ -66,8 +66,10 @@ class User < ActiveRecord::Base
       # a hash of names and seeing if hash has the value
       existing = self.interests.pluck(:name)
       JSON.parse(json_interest_names).each do |interest_name|
-        unless existing.include? Interest.capitalize_first interest_name
+        interest_name = Interest.capitalize_first interest_name
+        unless existing.include? interest_name
           add_interest(interest_name)
+          existing << interest_name
         end
       end
     rescue 
