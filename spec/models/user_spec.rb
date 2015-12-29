@@ -169,6 +169,14 @@ RSpec.describe User, :type => :model do
       }.to change { user.interests.count }.by 3
     end
 
+    it "should not add existing interests" do
+      user.add_interest "ants"
+
+      expect { 
+        user.add_interests_from_json('["ants", "plants"]')
+      }.to change { user.interests.count }.by 1
+    end
+
     it "shouldn't add anything for non-json input" do
       expect { user.add_interests_from_json '[cats]' }
         .to change { user.interests.count }.by 0

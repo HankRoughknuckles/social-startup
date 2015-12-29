@@ -3,6 +3,10 @@
 h1 Edit - About Me
 
 = form_for @user, url: update_about_user_path(@user) do |f|
+  h2 Interests
+  = f.text_field :interests, class: "interests"
+
+  h2 Other Accounts
   = f.fields_for :external_accounts do |nested|
     p
       = render 'external_account_fields', nested: nested

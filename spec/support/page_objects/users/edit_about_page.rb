@@ -10,6 +10,7 @@ class EditAboutPage
 
     @account_host_dropdown = ".external_accounts_hostsite"
     @account_url_input = ".external_accounts_url"
+    @interests_input = ".interests"
 
     @submit_button = "form.edit_user input[type=submit]"
   end
@@ -31,6 +32,10 @@ class EditAboutPage
     has_css? @account_url_input
   end
 
+  def has_interests_input?
+    has_css? @interests_input
+  end
+
   def set_hostsite hostsite
     dropdowns = page.all @account_host_dropdown
     dropdowns[0].set hostsite unless hostsite.nil?
@@ -39,6 +44,10 @@ class EditAboutPage
   def set_url url
     inputs = page.all @account_url_input
     inputs[0].set url unless url.nil?
+  end
+
+  def fill_interests input_string
+    find(@interests_input).set input_string 
   end
 
   def click_submit_button

@@ -27,6 +27,7 @@ describe "The edit about page" do
 
     it { expect(edit_page).to have_account_host_dropdown }
     it { expect(edit_page).to have_account_url_input }
+    it { expect(edit_page).to have_interests_input }
 
     describe "adding an external account" do
       it "should work when url is present" do
@@ -38,6 +39,16 @@ describe "The edit about page" do
       it "should not add anything if url is blank" do
         expect{ edit_page.click_submit_button }
           .to change { user.external_accounts.count }.by 0
+      end
+    end
+
+
+    describe "interests" do
+      it "should add interests" do
+        edit_page.fill_interests('["ants", "marbles"]')
+
+        expect { edit_page.click_submit_button }
+          .to change { user.interests.count }.by 2
       end
     end
   end

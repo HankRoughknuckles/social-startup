@@ -62,8 +62,13 @@ class User < ActiveRecord::Base
   # interests
   def add_interests_from_json json_interest_names
     begin
+      # TODO: this could get expensive - could be made better by creating
+      # a hash of names and seeing if hash has the value
+      existing = self.interests.pluck(:name)
       JSON.parse(json_interest_names).each do |interest_name|
-        add_interest interest_name
+        unless existing.include? Interest.capitalize_first interest_name
+          add_interest(interest_name)
+        end
       end
     rescue 
     end
