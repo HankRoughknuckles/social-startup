@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
 
   # Takes json for an array of strings and adds each to the user's
   # interests
-  def add_interests_from_json json_interest_names
+  def set_interests_from_json json_interest_names
     begin
       # TODO: this could get expensive - could be made better by creating
       # a hash of names and seeing if hash has the value

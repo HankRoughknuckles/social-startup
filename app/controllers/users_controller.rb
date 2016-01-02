@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
 
   def update_about
-    @user.add_interests_from_json params[:user][:interests]
+    @user.set_interests_from_json params[:user][:interests]
 
     if @user.update(about_params)
       redirect_to about_user_path(@user), 

@@ -155,17 +155,17 @@ RSpec.describe User, :type => :model do
 
 
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  #%% User#add_interests_from_json
+  #%% User#set_interests_from_json
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  describe "#add_interests_from_json" do
+  describe "#set_interests_from_json" do
     it "should add a single interest" do
-      user.add_interests_from_json '["cats"]'
+      user.set_interests_from_json '["cats"]'
       expect(user.reload.interests.find_by_name "Cats").to be_present
     end
 
     it "should add a multiple interests" do
       expect { 
-        user.add_interests_from_json('["cats", "plants", "loneliness"]')
+        user.set_interests_from_json('["cats", "plants", "loneliness"]')
       }.to change { user.interests.count }.by 3
     end
 
@@ -173,18 +173,18 @@ RSpec.describe User, :type => :model do
       user.add_interest "ants"
 
       expect { 
-        user.add_interests_from_json('["ants", "plants"]')
+        user.set_interests_from_json('["ants", "plants"]')
       }.to change { user.interests.count }.by 1
     end
 
     it "should only add one interest if duplicates occur in input" do
       expect { 
-        user.add_interests_from_json('["ants", "ants"]')
+        user.set_interests_from_json('["ants", "ants"]')
       }.to change { user.interests.count }.by 1
     end
 
     it "shouldn't add anything for non-json input" do
-      expect { user.add_interests_from_json '[cats]' }
+      expect { user.set_interests_from_json '[cats]' }
         .to change { user.interests.count }.by 0
     end
   end

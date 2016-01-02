@@ -50,6 +50,15 @@ describe "The edit about page" do
         expect { edit_page.click_submit_button }
           .to change { user.interests.count }.by 2
       end
+
+      it "should remove interests that aren't present in text_field" do
+        user.add_interest "ants"
+
+        edit_page.fill_interests('')
+        edit_page.click_submit_button
+
+        expect(user.interests.count).to eq 0
+      end
     end
   end
 end
