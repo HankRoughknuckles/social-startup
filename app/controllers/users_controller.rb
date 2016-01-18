@@ -21,8 +21,6 @@ class UsersController < ApplicationController
 
 
   def update_about
-    @user.set_interests_from_json params[:user][:interests]
-
     if @user.update(about_params)
       redirect_to about_user_path(@user), 
         notice: 'Project was successfully updated.'
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
 
   private
     def about_params
-      params.require(:user).permit(
+      params.require(:user).permit(:interest_list,
         external_accounts_attributes: [:id, :hostsite, :url, :_destroy]
       )
     end

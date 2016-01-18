@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_taggable
+  acts_as_taggable_on :interests
+
   #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   #%% Images
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,6 +52,7 @@ class User < ActiveRecord::Base
     (first_name.to_s + " " + last_name.to_s).strip
   end
 
+  # TODO: remove these interest functions after putting in tags
 
   # Adds a new interest to the user by interest name (case-insensitive).
   # Will create a new Interest record if none exists.

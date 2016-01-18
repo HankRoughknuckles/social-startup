@@ -45,19 +45,19 @@ describe "The edit about page" do
 
     describe "interests" do
       it "should add interests" do
-        edit_page.fill_interests('["ants", "marbles"]')
+        edit_page.fill_interests('ants, marbles')
 
         expect { edit_page.click_submit_button }
-          .to change { user.interests.count }.by 2
+          .to change { user.reload.interest_list.count }.by 2
       end
 
       it "should remove interests that aren't present in text_field" do
-        user.add_interest "ants"
+        user.interest_list.add "ants"
 
         edit_page.fill_interests('')
-        edit_page.click_submit_button
+        edit_page.click_submit_button 
 
-        expect(user.interests.count).to eq 0
+        expect(user.reload.interest_list.count).to eq 0
       end
     end
   end
