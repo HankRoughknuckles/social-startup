@@ -10,7 +10,7 @@ class EditAboutPage
 
     @account_host_dropdown = ".external_accounts_hostsite"
     @account_url_input = ".external_accounts_url"
-    @interests_input = ".interests"
+    @interests_input = "#user_interest_list"
 
     @submit_button = "form.edit_user input[type=submit]"
   end

@@ -13,7 +13,7 @@ $ ->
     list
 
 
-  $(".interests").bind("keydown", (event) ->
+  $("#user_interest_list").bind("keydown", (event) ->
     if event.keyCode == $.ui.keyCode.TAB and $(this).autocomplete("instance").menu.active
       event.preventDefault()
     return
