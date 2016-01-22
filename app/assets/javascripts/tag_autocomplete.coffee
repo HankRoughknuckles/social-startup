@@ -18,17 +18,15 @@ $ ->
       event.preventDefault()
     return
   ).autocomplete
+    delay: 500
     source: (request, response) ->
       $.getJSON("/interests.json", {
         term: extractLast request.term
         exclude: allButLast request.term
       }, response);
     search: ->
-      # custom minLength
       term = extractLast(@value)
-      if term.length < 2
-        return false
-      return
+      return false if term.length < 3
     focus: ->
       # prevent value inserted on focus
       false

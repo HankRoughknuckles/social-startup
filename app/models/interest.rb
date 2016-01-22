@@ -18,6 +18,7 @@ class Interest < ActiveRecord::Base
     ActsAsTaggableOn::Tag
       .where("(name ILIKE ?)", "%#{name}%")
       .where.not(name: names_to_exclude)
+      .limit(10)
   end
 
 
