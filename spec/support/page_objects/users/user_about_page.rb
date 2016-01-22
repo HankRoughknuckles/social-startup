@@ -13,6 +13,8 @@ class UserAboutPage
     @exteral_account_url_entry = ".external_url"
 
     @edit_about_link = ".edit_about"
+
+    @interest = ".interest"
   end
 
   def visit_page
@@ -38,5 +40,9 @@ class UserAboutPage
 
   def click_edit_about_link
     find(@edit_about_link).click
+  end
+
+  def has_interest? interest_name
+    has_css? @interest, text: interest_name
   end
 end

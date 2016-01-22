@@ -42,5 +42,13 @@ describe "About User Page" do
   end
 
   describe "interests" do
+    before do 
+      user.interest_list = "planes"
+      about_page.visit_page_as user 
+    end
+
+    it 'should show the users interests' do
+      expect(about_page).to have_interest "planes"
+    end
   end
 end
