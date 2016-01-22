@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Interest, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe ".autocomplete_results" do
+    it "should work"
+  end
+
+  describe ".search" do
+    it "should work"
+  end
 end
