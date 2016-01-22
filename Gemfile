@@ -18,7 +18,11 @@ gem 'possessive', '~> 1.0.1'
 gem 'bugsnag', '~> 2.8', '>= 2.8.12'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
 gem 'acts-as-taggable-on', '3.5.0'
+gem 'lol_dba', '2.0.3'
  
+group :development do
+  gem 'bullet', '5.0.0'
+end
  
 group :development, :test do
   gem 'byebug'
