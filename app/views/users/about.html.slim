@@ -1,8 +1,9 @@
 = provide :title, "About #{@user.first_name}"
 
-- @user.interest_list.each do |interest|
-  span.interest
-    = interest
+- if @user.interest_list.any?
+  h2 Interests
+  = interest_list @user
+
 - @user.external_accounts.each do |account|
   .row
     .account.col-md-6
