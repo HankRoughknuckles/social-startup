@@ -3,8 +3,10 @@
 h1.name= @user.full_name
 
 = image_tag @user.profile_picture(:medium), class: "profile"
-= link_to "About", about_user_path(@user), class: "about"
-= projects_page_link @user
+p
+  = link_to "About", about_user_path(@user), class: "about"
+  '  | 
+  = projects_page_link @user
 
 = render('posts/form') if @user == current_user
 
