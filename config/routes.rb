@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :external_accounts
   end
 
+  resources :interests, only: :index
+
   # get "users/:id" =>            "users#show", as: :user
   # get "users/:id/projects" =>   "users#projects", as: :user_projects
 
