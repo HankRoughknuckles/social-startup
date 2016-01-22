@@ -4,10 +4,7 @@ class Interest < ActiveRecord::Base
   ##%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   def self.autocomplete_results interest_name, exclude
     search(interest_name, exclude).map do |i|
-      { 
-        label: "#{i.name}  x#{i.taggings_count}", 
-        value: i.name 
-      }
+      { label: i.name, value: i.name }
     end
   end
 

@@ -49,4 +49,9 @@ class User < ActiveRecord::Base
   def full_name
     (first_name.to_s + " " + last_name.to_s).strip
   end
+
+
+  def comma_separated_tag_list
+    interest_list.to_s
+  end
 end

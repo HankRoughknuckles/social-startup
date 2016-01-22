@@ -4,7 +4,7 @@ h1 Edit - About Me
 
 = form_for @user, url: update_about_user_path(@user) do |f|
   h2 Interests
-  = f.text_field :interest_list, class: "interests"
+  = f.text_field :interest_list, class: "interests", value: @user.comma_separated_tag_list
 
   h2 Other Accounts
   = f.fields_for :external_accounts do |nested|
